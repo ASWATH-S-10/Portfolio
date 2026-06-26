@@ -67,6 +67,7 @@ readMoreBtn.onclick = (e) => {
 document.querySelectorAll('.services-box .read-more-btn').forEach(button => {
     button.addEventListener('click', () => {
         const moreContent = button.parentElement.querySelector('.more-content');
+        if(!moreContent) return;
         const isOpen = moreContent.style.display === 'inline';
         moreContent.style.display = isOpen ? 'none' : 'inline';
         button.textContent = isOpen ? 'Read More' : 'Read Less';
@@ -115,4 +116,24 @@ const languageObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.language-card').forEach(card => {
     languageObserver.observe(card);
+});
+
+ScrollReveal().reveal('.experience-card', {
+    origin: 'left',
+    distance: '60px',
+    duration: 2000
+});
+
+document.querySelectorAll('.experience-read-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const moreContent =
+            button.parentElement.querySelector('.experience-more-content');
+        if (moreContent.style.display === 'inline') {
+            moreContent.style.display = 'none';
+            button.textContent = 'Read More';
+        } else {
+            moreContent.style.display = 'inline';
+            button.textContent = 'Read Less';
+        }
+    });
 });
